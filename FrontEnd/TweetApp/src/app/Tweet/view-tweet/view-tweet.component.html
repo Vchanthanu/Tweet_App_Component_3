@@ -1,0 +1,62 @@
+<h3 class="my-1 text-center">#{{byUser?"My Tweet":"All Tweet"}}</h3>
+<div class="row">
+    <div class="col-sm-12" *ngIf="msgs.length != 0">
+        <p-messages [(value)]="msgs"></p-messages>
+    </div>
+</div>
+<div class="container mb-5 col-lg-7" [formGroup]="replyForm">
+    <div formArrayName="replyFormArray">
+        <div class="container-fluid" *ngFor="let detail of tweetList;let i = index">
+            <div class="card m-3 px-0">
+                <div class="card-header">
+                    <div class="d-flex">
+                        <span>
+                            <h5>@{{detail?.userName}}</h5>
+                        </span>
+                        <span class='ml-auto text-muted'>{{getDuration(detail.createdAt)}} ago</span>
+                        <span class="ml-auto" *ngIf="getUserName()==detail.userName"><a class="mx-3"
+                                href="javascript:void(0)" (click)="onUpdate(detail)">
+                                <i class=" material-icons text-primary">
+                                    <h5><span class="material-icons-outlined ">create</span></h5>
+                                </i>
+                            </a><a href="javascript:void(0)" class="mx-3" (click)="onDelete(detail.id)">
+                                <i class=" material-icons text-danger">
+                                    <h5><span class="material-icons-outlined">delete_sweep</span></h5>
+                                </i>
+                            </a>
+                        </span>
+                    </div>
+                    <p class="ml-4 mb-0">{{detail?.tweet}} <span class="text-primary">
+                            <em>{{detail?.tags}}</em></span></p>
+                </div>
+                <div class="card-body p-0 mx-2">
+                    <a href="javascript:void(0)" (click)="AddLike(detail.id)">
+                        <i class="material-icons">
+                            <span class="material-icons-outlined "> thumb_up </span>
+                        </i>
+                    </a>
+                    <span class="pt-5 ml-2"><strong>{{detail?.likes}}</strong></span>
+                    <p class="mb-0 h6">Comments </p>
+                    <div class="replyArea">
+                        <div *ngFor="let comment of detail.reply">
+                            <p class="ml-4 mb-0"> <span class="h6">@{{comment.userName}} - </span> {{comment?.message}}
+                                <span class="text-primary"><em>{{comment?.tags}}</em></span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row " formGroupName='{{i}}'>
+                        <div class="col-sm-12 p-0">
+                            <label class="col-sm-2" for="msg"><sup class="text-danger">*</sup>Comment : </label>
+                            <input class="col-sm-4" id="msg" class="mr-2" type="text" formControlName="message">
+                            <label class="col-sm-2" for="tag">Tag : </label>
+                            <input class="col-sm-2" id='tag' class="mr-2" type="text" formControlName="tags">
+                            <a class="col-sm-1" href="javascript:void(0)" (click)="onReply(i)">
+                                <i class=" material-icons"><span class="material-icons-outlined">send</span></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

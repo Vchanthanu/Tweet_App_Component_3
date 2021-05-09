@@ -1,0 +1,12 @@
+<div class="container mt-5 col-lg-5">
+    <div class="card">
+        <h3 class="text-center">#Notification</h3>
+        <div class="col-sm-12" *ngIf="notifications.length == 0">
+            <p-messages [(value)]="msgs"[closable]="false"></p-messages>
+        </div>
+        <div class="container-fluid" *ngFor="let info of notifications">
+            <h6 class='m-2'>Tweet posted by @{{info}}</h6>
+            <hr>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,36 @@
+<div class="row">
+    <div class="col-sm-12" *ngIf="msgs.length != 0">
+        <p-messages [(value)]="msgs"></p-messages>
+    </div>
+</div>
+<div class="container mt-5 col-lg-5">
+    <div class="card">
+        <div class="container-fluid">
+            <h2 class="text-center" *ngIf="!isUpdate">#Add_Tweet</h2>
+            <h2 class="text-center" *ngIf="isUpdate">#Update_Tweet</h2>
+            <form [formGroup]="addTweetForm" (ngSubmit)="submit()">
+                <div class="form-row">
+                    <div class="form-group col-sm-12 col-lg-12">
+                        <label for="tweet"><sup class="text-danger">*</sup><strong>Tweet</strong></label>
+                        <textarea type="textarea" class="form-control" id="tweet" rows="3"
+                            placeholder="Enter the description" formControlName="tweet"></textarea>
+                        <!-- <div class="text-danger" *ngIf="tweet.touched && !tweet.valid"><small> Tweet Description is required</small></div> -->
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-sm-12  col-lg-12">
+                        <label class="text-bold" for="tag"><strong>Tags</strong> (Use Space to seperate tag)</label>
+                        <input type="text" class="form-control" id="tag" placeholder="Enter the tags"
+                            formControlName="tags">
+                        <!-- <div class="text-danger" *ngIf="username.touched && !username.valid"><small> Password is required</small></div> -->
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="text-center form-group col-sm-12 col-lg-12 ">
+                        <button type="submit" class="btn btn-primary text-light">Post</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

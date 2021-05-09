@@ -1,0 +1,5 @@
+2021-04-26 22:37:55.213  INFO 14940 --- [main] c.t.t.TweetserviceApplication            : Starting TweetserviceApplication using Java 1.8.0_201 on Lab-637502029361400438-1 with PID 14940 (C:\805831_Chanthanu\Tweet_App_Component_2\Tweet_App_Component_2\MidTier\tweetservice\target\classes started by User in C:\805831_Chanthanu\Tweet_App_Component_2\Tweet_App_Component_2\MidTier\tweetservice)
+2021-04-26 22:37:55.218 DEBUG 14940 --- [main] c.t.t.TweetserviceApplication            : Running with Spring Boot v2.4.5, Spring v5.3.6
+2021-04-26 22:37:55.219  INFO 14940 --- [main] c.t.t.TweetserviceApplication            : No active profile set, falling back to default profiles: default
+2021-04-26 22:37:57.493  INFO 14940 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+2021-04-26 22:37:57.622  INFO 14940 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 121 ms. Found 2 MongoDB repository interfaces.

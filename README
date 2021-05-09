@@ -1,0 +1,31 @@
+App Name  : Tweet App
+
+App Description : 
+	Tweet app is used for post tweet with tags and repling back to posted tweet , user must login to add or view tweet .
+	
+Feature of TweetApp:
+	1)Adding a post
+	2)updating a post
+	3)Like the post
+	4)Repling to post
+	5)User - login
+	6)User - signUp
+	
+Technology :
+	UI - Angular 11
+	BackEnd - SpringBoot with maven
+	DataBase - MongoDB
+	Containerization -Docker
+	Logging - ELK (Elastic search Logstash kibana)
+	MessagingService - Kafka
+	
+kafka local:
+.\bin\windows\kafka-server-start.bat .\config\server.properties
+.\bin\windows\zookeeper-server-start.bat .\config\zookeeper.properties
+
+logstash
+.\bin\logstash -f logstash.conf
+
+kibana
+bin\kibana.bat
+

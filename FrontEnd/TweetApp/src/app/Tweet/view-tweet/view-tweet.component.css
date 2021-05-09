@@ -1,0 +1,5 @@
+.replyArea{
+    max-height: 70px;
+    overflow-y: auto;
+    display: block;
+}
