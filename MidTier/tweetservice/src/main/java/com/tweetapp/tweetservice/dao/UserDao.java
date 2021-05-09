@@ -24,5 +24,5 @@ public interface UserDao {
 
 	public String changePassword(User user) throws UserException;
 
-	public void pushNotifications(String notification);
+//	public void pushNotifications(String notification);
 }

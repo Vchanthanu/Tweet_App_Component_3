@@ -5,7 +5,6 @@ package com.tweetapp.tweetservice.service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,7 +14,6 @@ import com.tweetapp.tweetservice.bean.Reply;
 import com.tweetapp.tweetservice.dao.PostDao;
 import com.tweetapp.tweetservice.entity.Post;
 import com.tweetapp.tweetservice.exception.UserException;
-import com.tweetapp.tweetservice.kafka.KafkaProducer;
 import com.tweetapp.tweetservice.util.LoggerConst;
 
 /**
@@ -28,8 +26,6 @@ public class PostServiceImpl implements PostService {
 	@Autowired
 	PostDao postDao;
 
-	@Autowired
-	KafkaProducer producer;
 
 	@Override
 	public List<Post> getAllTweet() throws UserException {
@@ -55,7 +51,6 @@ public class PostServiceImpl implements PostService {
 			res.setMessage("Failed to post Tweet");
 			LoggerConst.LOG.info("Failed to Add tweet - Inside Service");
 		}else {
-			producer.pushService(userName);
 			res.setMessage("Tweet posted Successfully");
 			LoggerConst.LOG.info("Successfully Added tweet - Inside Service");
 		}
@@ -72,10 +67,10 @@ public class PostServiceImpl implements PostService {
 	public PostResponse updateTweet(String id, Post post) throws UserException {
 		LoggerConst.LOG.info("Update tweet - Inside Service");
 		PostResponse res = new PostResponse();
-		Optional<Post> toSave = postDao.findById(id);
-		toSave.get().setTweet(post.getTweet());
-		toSave.get().setTags(post.getTags());
-		if (null == postDao.updateTweet(toSave.get())) {
+		Post toSave = postDao.findById(id);
+		toSave.setTweet(post.getTweet());
+		toSave.setTags(post.getTags());
+		if (null == postDao.updateTweet(toSave)) {
 			res.setStatus(false);
 			res.setMessage("Failed update Tweet");
 			LoggerConst.LOG.info("Failed to update tweet - Inside Service");
@@ -90,9 +85,9 @@ public class PostServiceImpl implements PostService {
 	public PostResponse likeTweet(String id) throws UserException {
 		LoggerConst.LOG.info("Like a tweet - Inside Service");
 		PostResponse res = new PostResponse();
-		Optional<Post> toSave = postDao.findById(id);
-		toSave.get().setLikes(toSave.get().getLikes() + 1);
-		if (null == postDao.updateLike(toSave.get())) {
+		Post toSave = postDao.findById(id);
+		toSave.setLikes(toSave.getLikes() + 1);
+		if (null == postDao.updateLike(toSave)) {
 			res.setStatus(false);
 			res.setMessage("Failed update Like");
 			LoggerConst.LOG.info("Failed to Like a tweet - Inside Service");
@@ -107,16 +102,16 @@ public class PostServiceImpl implements PostService {
 	public PostResponse replyToTweet(String userName, String id, Reply reply) throws UserException {
 		LoggerConst.LOG.info("Reply to tweet - Inside Service");
 		PostResponse res = new PostResponse();
-		Optional<Post> toSave = postDao.findById(id);
+		Post toSave = postDao.findById(id);
 		List<Reply> replyToSave = new ArrayList<Reply>();
-		if (toSave.get().getReply() != null) {
-			replyToSave = toSave.get().getReply();
+		if (toSave.getReply() != null) {
+			replyToSave = toSave.getReply();
 		}
 		reply.setCreatedAt();
 		reply.setUserName(userName);
 		replyToSave.add(reply);
-		toSave.get().setReply(replyToSave);
-		if (null == postDao.replyToTweet(toSave.get())) {
+		toSave.setReply(replyToSave);
+		if (null == postDao.replyToTweet(toSave)) {
 			res.setStatus(false);
 			res.setMessage("Failed to save reply");
 			LoggerConst.LOG.info("Failed while Reply to tweet - Inside Service");

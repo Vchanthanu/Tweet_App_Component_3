@@ -1,25 +1,14 @@
 spring:
-  data:
-    mongodb:
-      uri: mongodb://localhost:27017/tweetdb
-      
   application:
     name: tweetservice
     
-kafka:
- consumer:
-    bootstrap-servers:
-      - localhost:9092
-    group-id: tweetkafka
-    key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-    value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-    auto-offset-reset: earliest
-    
- producer:
-    bootstrap-servers:
-      - localhost:9092
-    key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-    value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+amazon:
+  access:
+    key:
+    secret-key:
+  region:
+  end-point:
+    url: dynamodb.us-east-1.amazonaws.com
 
 server:
   port: 8095

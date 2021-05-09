@@ -5,15 +5,23 @@ package com.tweetapp.tweetservice.bean;
 
 import java.util.Date;
 
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBDocument;
+
 /**
  * @author Chanthanu
  *
  */
+@DynamoDBDocument
 public class Reply {
 
+	@DynamoDBAttribute
 	private String userName;
+	@DynamoDBAttribute
 	private String tags;
+	@DynamoDBAttribute
 	private String message;
+	@DynamoDBAttribute
 	private Date createdAt;
 
 	public Reply(String userName, String tags, String message, Date createdAt) {

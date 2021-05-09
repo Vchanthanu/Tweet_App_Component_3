@@ -3,8 +3,6 @@
  */
 package com.tweetapp.tweetservice.dao;
 
-import java.util.Optional;
-
 import java.util.List;
 
 import com.tweetapp.tweetservice.entity.Post;
@@ -22,7 +20,7 @@ public interface PostDao {
 
 	List<Post> getAllTweetByUserName(String userName) throws UserException;
 
-	Optional<Post> findById(String id) throws UserException;
+	Post findById(String id) throws UserException;
 
 	Post updateTweet(Post post) throws UserException;
 
