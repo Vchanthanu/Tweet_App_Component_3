@@ -36,6 +36,7 @@ public class UserServiceImpl implements UserService {
 	public UserResponse userLogin(String userName, String password) throws UserException {
 		LoggerConst.LOG.info("User login - Inside Service");
 		User user = userDao.getUserByUsername(userName);
+		LoggerConst.LOG.info("User"+user);
 		UserResponse res = new UserResponse();
 		if (user != null) {
 			if (password.contentEquals(user.getPassword())) {

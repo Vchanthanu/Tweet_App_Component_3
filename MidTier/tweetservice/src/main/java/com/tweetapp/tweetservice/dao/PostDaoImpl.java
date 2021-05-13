@@ -47,7 +47,7 @@ public class PostDaoImpl implements PostDao {
 		HashMap<String, AttributeValue> eav = new HashMap<String, AttributeValue>();
 		eav.put(":v1", new AttributeValue().withS(UserName));
 		DynamoDBScanExpression scanExpression = new DynamoDBScanExpression()
-				.withFilterExpression("equal(userName,:v1)")
+				.withFilterExpression("userName=:v1")
 				.withExpressionAttributeValues(eav);
 		return mapper.scan(Post.class, scanExpression);
 	}
