@@ -14,18 +14,8 @@ Feature of TweetApp:
 Technology :
 	UI - Angular 11
 	BackEnd - SpringBoot with maven
-	DataBase - MongoDB
+	DataBase - AWS-DynamoDB
 	Containerization -Docker
-	Logging - ELK (Elastic search Logstash kibana)
-	MessagingService - Kafka
 	
-kafka local:
-.\bin\windows\kafka-server-start.bat .\config\server.properties
-.\bin\windows\zookeeper-server-start.bat .\config\zookeeper.properties
 
-logstash
-.\bin\logstash -f logstash.conf
-
-kibana
-bin\kibana.bat
 
