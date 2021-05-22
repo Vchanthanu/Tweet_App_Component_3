@@ -21,15 +21,20 @@ public class Reply {
 	private String tags;
 	@DynamoDBAttribute
 	private String message;
-	@DynamoDBAttribute
-	private Date createdAt;
+//	@DynamoDBAttribute
+//	private Date createdAt;
 
-	public Reply(String userName, String tags, String message, Date createdAt) {
+	public Reply(String userName, String tags, String message) {
 		super();
 		this.userName = userName;
 		this.tags = tags;
 		this.message = message;
-		this.createdAt = createdAt;
+//		this.createdAt = createdAt;
+	}
+
+	public Reply() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	public String getUserName() {
@@ -56,18 +61,17 @@ public class Reply {
 		this.message = message;
 	}
 
-	public Date getCreatedAt() {
-		return createdAt;
-	}
-
-	public void setCreatedAt() {
-		this.createdAt = new Date();
-	}
+//	public Date getCreatedAt() {
+//		return createdAt;
+//	}
+//
+//	public void setCreatedAt() {
+//		this.createdAt = new Date();
+//	}
 
 	@Override
 	public String toString() {
-		return "Reply [userName=" + userName + ", tags=" + tags + ", message=" + message + ", createdAt=" + createdAt
-				+ "]";
+		return "Reply [userName=" + userName + ", tags=" + tags + ", message=" + message+ "]";
 	}
 
 }

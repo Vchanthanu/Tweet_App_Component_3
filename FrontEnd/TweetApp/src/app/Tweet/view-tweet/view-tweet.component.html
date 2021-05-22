@@ -13,7 +13,7 @@
                         <span>
                             <h5>@{{detail?.userName}}</h5>
                         </span>
-                        <span class='ml-auto text-muted'>{{getDuration(detail.createdAt)}} ago</span>
+                        <!-- <span class='ml-auto text-muted'>{{getDuration(detail.createdAt)}} ago</span> -->
                         <span class="ml-auto" *ngIf="getUserName()==detail.userName"><a class="mx-3"
                                 href="javascript:void(0)" (click)="onUpdate(detail)">
                                 <i class=" material-icons text-primary">

@@ -38,7 +38,9 @@ public class PostDaoImpl implements PostDao {
 	@Override
 	public List<Post> getAllTweet() throws UserException {
 		LoggerConst.LOG.info("Get all tweet  - Inside Repository");
-		return mapper.scan(Post.class, new DynamoDBScanExpression());
+		List<Post> scanResult = mapper.scan(Post.class, new DynamoDBScanExpression());
+//		scanResult.forEach(System.out::println);
+		return scanResult;
 	}
 
 	@Override
