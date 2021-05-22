@@ -4,7 +4,7 @@ services:
     image: tweet-application-service
     build: MidTier/tweetservice/.
     ports:
-      - "8090:8090"
+      - "8095:8095"
      
    tweet-app-ui:
     image: tweet-app-ui
