@@ -5,7 +5,6 @@ spring:
 amazon:
   access:
     key: AKIAQSH3AIQGSPSFUREP
-    secret-key: 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
   region: us-east-2
   end-point:
     url: dynamodb.us-east-2.amazonaws.com
